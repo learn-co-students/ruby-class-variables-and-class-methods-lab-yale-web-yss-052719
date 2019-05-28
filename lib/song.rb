@@ -32,23 +32,21 @@ class Song
         @@all
     end
     def self.genre_count
-        genre_hash = {}
-        original_genres.each do |genre|
-            if !genre_hash.keys.include?(genre)
-                genre_hash[genre] = 0
-            end
-            genre_hash[genre] += 1
-        end
-        return genre_hash
+        count_hash(original_genres)
     end
     def self.artist_count
-        artist_hash = {}
-        original_artists.each do |artist|
-            if !artist_hash.keys.include?(artist)
-                artist_hash[artist] = 0
-            end
-            artist_hash[artist] += 1
-        end
-        return artist_hash
+        count_hash(original_artists)
     end
+end
+
+# helper function 
+def count_hash(data)
+    new_hash = {}
+    data.each do |item|
+        if !new_hash.keys.include?(item)
+            new_hash[item] = 0
+        end
+        new_hash[item] += 1
+    end
+    return new_hash
 end
